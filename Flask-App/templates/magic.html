@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <title>Magic-8-Ball</title>
+</head>
+<body>
+    {% if not responding %}
+        <form action="{{url_for('magic_ball')}}" method="post">
+            <div class="container">
+                <center>
+                    <h1>Magic-8-Ball</h1>
+                    <img src="{{ url_for('static', filename='images/magicball.jpeg') }}" alt="" width="900px" height="600px">
+                    <br>
+                    <br><br>
+                    <strong><label for="question">Enter your Question:: </label><input type="text" name="question"></strong>
+                    <button type="submit">Submit</button>
+                </center>
+            </div>
+        </form>
+    {% else %}
+    <div class="container">
+        <center>
+        <h1>Magic-8-Ball</h1>
+        <img src="{{ url_for('static', filename='images/magicball.jpeg') }}" alt="" width="900px" height="600px">
+        <br>
+        <br><br>
+        <strong><label>Your Question - {{ question }}</label></strong>
+        <br><br>
+        <strong><label>Response - {{ response }}</label></strong>
+        <br><br>
+        <a href="{{ url_for('magic_ball') }}"><p>Wanna try different Question?</p></a>
+    </center>
+    </div>
+    {% endif %}
+</body>
+</html>
