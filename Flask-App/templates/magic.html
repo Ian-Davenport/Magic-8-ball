@@ -15,32 +15,43 @@
             <div class="container form-group">
                 <center>
                     <br>
-                    <h1>Magic-8-Ball</h1>
+
+                    <h1 class="header">Magic-8-Ball</h1>
                     <img class="img-container" src="{{ url_for('static', filename='images/8ball.png') }}" alt="" width="900px" height="600px">
-                    <br>
-                    <strong class="question"><label for="question">Enter your Question: </label><br><br><input class="form-control" type="text" required name="question"><br><br></strong><button class="btn btn-outline-primary" type="submit">Submit</button>
-                    
+                    <br>   
+                    <strong class="question"><label for="question">Enter your Question: </label><br><br>
+                        <input class="form-control" type="text" required name="question" autofocus><br><br></strong>                  
+                        <button class=button id="buttonBall" onclick="shakeBall()">Submit</button>
                 </center>
-            </div>
+        </div>
         </form>
     {% else %}
     <div class="container">
         <center>
         <br><br>
-        <h1>Magic-8-Ball</h1>
+        <h1 class="header">Magic-8-Ball</h1>
         <img class="img-container" src="{{ url_for('static', filename='images/8ball.png') }}" alt="" width="900px" height="600px">
         <br>
         <br><br>
-        <label class="label">Your Question - {{ question }}</label>   
+        
+        <label class="label">Your Question - {{ question }}</label> 
         <br>
-        <label class="answer" for="question">{{ response }}</label>
-        <br><br>
-        <a href="{{ url_for('magic_ball') }}"><p>Wanna try different Question?</p></a>
-    </center>
-    </div>
+            <label class="answer" for="question">{{ response }}</label>
+        <div class="box">
+        <a class="link" href="{{ url_for('magic_ball') }}"><p class="newQuestion">Ask Another Question?</p></a>
+</div>
+</div>
+
     {% endif %}
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+const myButton = document.querySelector(".img-container");
+function shakeBall() {
+    myButton.classList.toggle("button-active");
+}
+    </script>
 </body>
 
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </html>
