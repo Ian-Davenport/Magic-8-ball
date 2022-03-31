@@ -5,42 +5,127 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="icon" href="static/images/logo.png">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Magic-8-Ball</title>
 </head>
-<body>
+<body class="bg">
     {% if not responding %}
         <form action="{{url_for('magic_ball')}}" method="post">
             <div class="container form-group">
                 <center>
                     <br>
-                    <h1>Magic-8-Ball</h1>
-                    <img class="img-container" src="{{ url_for('static', filename='images/8ball.png') }}" alt="" width="900px" height="600px">
                     <br>
-                    <strong class="question"><label for="question">Enter your Question: </label><br><br><input class="form-control" type="text" required name="question"><br><br></strong><button class="btn btn-outline-primary" type="submit">Submit</button>
-                    
+                    <br>
+                    <h1>Magic-8-Ball</h1>
+                    <img class="img-container" src="{{ url_for('static', filename='images/8ball.png') }}" alt="" width="850px" height="750px">
+                    <br>
+                    <strong class="question"><label for="question">Enter your Question: </label><br><br><input class="form-control" type="text" required name="question"><br><br></strong><button class="btn-warning btn-lg" type="submit" onclick="shakeBall()">Submit</button>
                 </center>
             </div>
         </form>
     {% else %}
-    <div class="container">
+
+    <div class='wrapper' id="effect">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+    <div class="container" id="response" style="display: none;">
         <center>
         <br><br>
         <h1>Magic-8-Ball</h1>
-        <img class="img-container" src="{{ url_for('static', filename='images/8ball.png') }}" alt="" width="900px" height="600px">
+        <img class="img-container" src="{{ url_for('static', filename='images/8ball.png') }}" alt="" width="850px" height="750px">
         <br>
         <br><br>
         <label class="label">Your Question - {{ question }}</label>   
         <br>
         <label class="answer" for="question">{{ response }}</label>
-        <br><br>
-        <a href="{{ url_for('magic_ball') }}"><p>Wanna try different Question?</p></a>
+
+        <a class="anchor" href="{{ url_for('magic_ball') }}"><p>Wanna try different Question?</p></a>
     </center>
     </div>
     {% endif %}
 </body>
 
+
+<script>
+    // Shake Effect
+    const myButton = document.querySelector(".img-container");
+    function shakeBall() {
+        myButton.classList.toggle("button-active");
+    }
+    // Swrill Effect
+    setTimeout( () => {
+        const resp = document.getElementById('effect')
+        resp.style.display = 'none'
+    }, 6000 )
+    setTimeout(() => {
+        const effect = document.getElementById('response')
+        effect.style.display = 'block'
+    }, 6000)
+    
+</script>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </html>
